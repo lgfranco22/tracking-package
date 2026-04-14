@@ -22,6 +22,11 @@ Edite as variáveis no início do arquivo `track.sh`:
 2.  **CODIGO:** O código de rastreio (ex: `NN112233445BR`).
 3.  **ntfy.sh/\<topico>:** Substitua pelo seu tópico privado no ntfy.
 
+### Caso deseje alterar a transportadora, veja nesse link o codigo correto
+```url
+https://res.17track.net/asset/carrier/info/apicarrier.all.json
+```
+
 ## 📂 Estrutura de Arquivos
 * `/home/luiz/log.txt`: Registra cada execução e disparos de alertas.
 * `/tmp/rastreio_cache.json`: Armazena o último estado do rastreio para comparação.
