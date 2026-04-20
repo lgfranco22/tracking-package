@@ -19,6 +19,12 @@ RESPONSE=$(curl -s -X POST --header "17token:$TOKEN" \
 # Adicionei o filtro 'select(. != null)' para evitar erros caso a API responda mas o array de eventos ainda não exista
 EVENTOS_ATUAIS=$(echo "$RESPONSE" | jq -c '.data.accepted[0].track_info.tracking.providers[0].events | select(. != null)')
 
+if [ "$EVENTOS_ATUAIS" == "[]" ] || [ -z "$EVENTOS_ATUAIS"]; then
+     EVENTOS_ATUAIS="Nenhum evento encontrado ainda."
+else
+     EVENTOS_ATUAIS=$EVENTOS_ATUAIS
+fi
+
 # Se a API falhar ou não houver eventos, encerra silenciosamente para não corromper o cache
 if [ -z "$EVENTOS_ATUAIS" ] || [ "$EVENTOS_ATUAIS" == "null" ]; then
     echo "[$ATUAL] Sem dados de eventos disponíveis no momento." >> $LOG
